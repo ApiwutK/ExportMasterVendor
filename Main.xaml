@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="1130.4,4155.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="1130.4,4501.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -99,7 +99,7 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="849.6,4090.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="962.4,4436.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolCheckFile" />
     </Sequence.Variables>
@@ -108,8 +108,10 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:FolderExistsX DisplayName="Folder Exists - ExportMasterVendor" Exists="[boolCheckFile]" sap:VirtualizedContainerService.HintSize="787.2,174.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), &quot;Downloads&quot;,&quot;MasterVendor.xls&quot;)]" />
-    <ui:IfElseIf DisplayName="Else If - ExportMasterVendor" sap:VirtualizedContainerService.HintSize="787.2,426.4" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+    <ui:FileExistsX DisplayName="File Exists" Exists="[boolCheckFile]" sap:VirtualizedContainerService.HintSize="900,174.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), &quot;Downloads&quot;,&quot;MasterVendor.xls&quot;)]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="900,130.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), &quot;Downloads&quot;,&quot;MasterVendor.xls&quot;)]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="900,130.4" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[boolCheckFile.ToString]" />
+    <ui:IfElseIf DisplayName="Else If - ExportMasterVendor" sap:VirtualizedContainerService.HintSize="900,426.4" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
           <ui:IfElseIfBlock BlockType="If" Condition="[boolCheckFile]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
@@ -120,7 +122,14 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="353.6,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), &quot;Downloads&quot;,&quot;MasterVendor.xls&quot;)]" />
+                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="353.6,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), &quot;Downloads&quot;,&quot;MasterVendor.xls&quot;)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:DeleteFileX>
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
@@ -133,7 +142,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:IfElseIf>
-    <Sequence DisplayName="WSL" sap:VirtualizedContainerService.HintSize="787.2,3400.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="900,125.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;stop&quot;]" />
+    <Sequence DisplayName="WSL" sap:VirtualizedContainerService.HintSize="900,3360.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="si:FileInfo" Name="StrFileWSLexpert" />
       </Sequence.Variables>
@@ -143,7 +153,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="724.8,2915.2" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="http://www.transolution.in.th/WSL/tools/SQL.aspx">
+      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="724.8,2875.2" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="http://www.transolution.in.th/WSL/tools/SQL.aspx">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -230,7 +240,7 @@
                   </Catch>
                 </TryCatch.Catches>
               </TryCatch>
-              <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into 'SQL'" EmptyField="True" sap:VirtualizedContainerService.HintSize="628.8,196" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[&quot;SELECT vt.s_comp_id,&#xD;&#xA;vt.s_vend_id,&#xD;&#xA;v.S_VEND_ID_CARD,&#xD;&#xA;v.S_VEND_CONTRACT_CODE,&#xD;&#xA;v.s_vend_name,&#xD;&#xA;vt.s_tt_id,&#xD;&#xA;tt.s_tt_name,&#xD;&#xA;vt.s_vctt_id,&#xD;&#xA;vt.s_lp_number,&#xD;&#xA;vt.I_LP_PROVINCE_ID,&#xD;&#xA;vt.s_lp2_number,&#xD;&#xA;vt.I_LP2_PROVINCE_ID,&#xD;&#xA;p.S_PROVINCE_NAME,&#xD;&#xA;v.S_CONTACT_PERSON,&#xD;&#xA;v.S_CONTACT_PHONE_NO,&#xD;&#xA;vt.D_EFFECTIVE,&#xD;&#xA;vt.C_Status&#xD;&#xA;FROM vctt_trucks vt,&#xD;&#xA;vendors v,&#xD;&#xA;truck_types tt,&#xD;&#xA;provinces p&#xD;&#xA;WHERE vt.s_vend_id = v.s_vend_id&#xD;&#xA;AND vt.s_tt_id = tt.s_tt_id&#xD;&#xA;AND vt.I_LP_PROVINCE_ID = p.i_province_id&#xD;&#xA;AND ( vt.C_Status = 'Y' or ( vt.C_Status = 'N' and trunc(vt.D_CANCELLED_STATUS) &gt; to_date('&quot;+DateTime.Today.ToString(&quot;dd-MM-yyyy&quot;)+&quot;','dd-MM-YYYY') ) )&#xD;&#xA;ORDER BY vt.s_comp_id,&#xD;&#xA;vt.s_vend_id,&#xD;&#xA;vt.s_tt_id,&#xD;&#xA;vt.s_vctt_id&quot;]">
+              <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into 'SQL'" EmptyField="True" sap:VirtualizedContainerService.HintSize="628.8,196" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[&quot;SELECT vt.s_comp_id,&#xA;vt.s_vend_id,&#xA;v.S_VEND_ID_CARD,&#xA;v.S_VEND_CONTRACT_CODE,&#xA;v.s_vend_name,&#xA;vt.s_tt_id,&#xA;tt.s_tt_name,&#xA;vt.s_vctt_id,&#xA;vt.s_lp_number,&#xA;vt.I_LP_PROVINCE_ID,&#xA;vt.s_lp2_number,&#xA;vt.I_LP2_PROVINCE_ID,&#xA;p.S_PROVINCE_NAME,&#xA;v.S_CONTACT_PERSON,&#xA;v.S_CONTACT_PHONE_NO,&#xA;vt.D_EFFECTIVE,&#xA;vt.C_Status&#xA;FROM vctt_trucks vt,&#xA;vendors v,&#xA;truck_types tt,&#xA;provinces p&#xA;WHERE vt.s_vend_id = v.s_vend_id&#xA;AND vt.s_tt_id = tt.s_tt_id&#xA;AND vt.I_LP_PROVINCE_ID = p.i_province_id&#xA;AND ( vt.C_Status = 'Y' or ( vt.C_Status = 'N' and trunc(vt.D_CANCELLED_STATUS) &gt; to_date('&quot;+DateTime.Today.ToString(&quot;dd-MM-yyyy&quot;)+&quot;','dd-MM-YYYY') ) )&#xA;ORDER BY vt.s_comp_id,&#xA;vt.s_vend_id,&#xA;vt.s_tt_id,&#xA;vt.s_vctt_id&quot;]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="01aaf094-7242-49e2-8ee9-71bc3baad267" InformativeScreenshot="eed544e666ad9272525e1fe36ad0f86d" Selector="&lt;html app='msedge.exe' title='Transport System Database' /&gt;&lt;webctrl class='TbBox' tableRow='3' tag='TABLE' /&gt;&lt;webctrl id='cphMain_tbSQL' tableRow='4' tag='TEXTAREA' /&gt;" WaitForReady="COMPLETE">
                     <ui:Target.TimeoutMS>
